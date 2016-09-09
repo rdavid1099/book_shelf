@@ -6,5 +6,9 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :password, presence: true
 
-  enum role: ["default", "admin"]
+  # enum role: ["default", "admin"]
+  #
+  def admin?
+    role == 1
+  end
 end

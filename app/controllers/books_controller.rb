@@ -1,4 +1,9 @@
 class BooksController < ApplicationController
+  before_action :require_login
+
+  def require_login
+    redirect_to login_path unless logged_in?
+  end
 
   def index
     @books = current_user.books
@@ -25,7 +30,7 @@ class BooksController < ApplicationController
       flash[:notice] = "You successfully created a book"
       redirect_to user_books_path(current_user)
     else
-      flash[:error] = @book.errors.full_messages.join(", ")
+      flash.now[:error] = @book.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -35,6 +40,7 @@ class BooksController < ApplicationController
     if @book.update( book_params )
       redirect_to user_books_path(current_user)
     else
+      flash.now[:error] = @book.errors.full_messages.join(", ")
       render :edit
     end
   end
