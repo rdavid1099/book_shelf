@@ -1,0 +1,7 @@
+<h1><%= current_user.name %>'s Bookshelf</h1>
+<%= link_to "View All Books", user_books_path(current_user.id) %>
+<ul>
+  <li>Name: <%= current_user.name %></li>
+  <li>Username: <%= current_user.username %></li>
+  <li>Password Last Updated: <%= current_user.updated_at %></li>
+</ul>

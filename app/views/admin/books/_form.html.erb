@@ -1,0 +1,19 @@
+<%= form_for(@book) do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %><br>
+
+  <%= f.label :quantity %>
+  <%= f.text_field :quantity %><br>
+
+  <%= f.label :category %>
+  <%= f.collection_select :category_id, @categories, :id, :genre %><br>
+
+  <%= f.label :user_id, "Owner" %>
+  <%= f.collection_select :user_id, @users, :id, :name %><br>
+
+  <%= f.submit %>
+<% end %>

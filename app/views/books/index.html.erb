@@ -1,0 +1,13 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<%= link_to "Add New Book to the Shelf", new_user_book_path %>
+
+<ul>
+  <% @books.each do |book| %>
+    <li><%= link_to book.title, user_book_path(current_user, book.id) %> - $<%= book.price %> - <%= book.quantity %>
+      <%= link_to "Delete", user_book_path(current_user, book.id), method: :delete %> |
+      <%= link_to "Edit", edit_user_book_path(current_user, book.id) %></li>
+  <% end %>
+</ul>

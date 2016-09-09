@@ -1,0 +1,10 @@
+<h1>Admin Books<h1>
+<h2>All Books</h2>
+<ul>
+  <% @books.each do |book| %>
+    <li><%= link_to book.title, admin_book_path(book) %><br>
+    <%= link_to "Edit", edit_admin_book_path(book) %> |
+    <%= link_to "Delete", admin_book_path(book), method: :delete %></li>
+  <% end %>
+</ul>
+<%= link_to "Create New Book", new_admin_book_path %>

@@ -1,0 +1,9 @@
+<h1><%= @book.title %></h1>
+<ul>
+  <li>Price - $<%= @book.price %></li>
+  <li>Quantity - <%= @book.quantity %></li>
+  <li>Category - <%= @book.category.genre %></li>
+  <%= link_to "Delete", user_book_path(current_user, @book), method: :delete %> |
+  <%= link_to "Edit", edit_user_book_path(current_user, @book) %>
+</ul>
+<h4><%= link_to "#{current_user.username}'s Profile", user_path(current_user) %>
